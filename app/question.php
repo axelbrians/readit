@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class question extends Model
 {
     protected $fillable = [
-        'title_question', 'detail_question'
+        'title_question', 'detail_question', 'id_question'
     ];
 
     protected $hidden = [

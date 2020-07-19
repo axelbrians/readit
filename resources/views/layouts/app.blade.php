@@ -29,7 +29,7 @@
             <div class="container">
 
 
-                <a class="navbar-brand">
+            <a class="navbar-brand" href="{{ route('home') }}">
                 
                     <i class="fa fa-home"></i>
                     {{ config('app.name', 'Readit') }}
@@ -68,6 +68,10 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('userquestion') }}">
+                                        {{ __('My Question') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

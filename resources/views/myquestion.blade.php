@@ -1,19 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container   ">
-    <div class="row justify-content-between">
-        <div class="col-3">
-            <h3>Question List</h3>
-        </div>
-        <div class="col-3 ml-auto">
-            <a class="btn btn-primary" href="{{ route('insertquestion') }}">Ask Question</a>
-        </div>
-    </div>
-    <div class="row justify-content-end">
-        <div></div>
-    </div>
-</div>
 
 @foreach ($questions as $question)
 <div class="container ">
@@ -43,6 +30,5 @@
     </div>
 </div>
 @endforeach
-
 
 @endsection
