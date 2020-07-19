@@ -19,5 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// route for homepage view
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+// route for question form view
+Route::get('/insertquestion', 'InsertQuestionController@index');
+
+// submit question route
+Route::post('ask', 'InsertQuestionController@ask')->name('ask');

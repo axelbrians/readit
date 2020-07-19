@@ -31,7 +31,7 @@
 
                 <a class="navbar-brand">
                 
-<i class="fa fa-home"></i>
+                    <i class="fa fa-home"></i>
                     {{ config('app.name', 'Readit') }}
                 </a>
                 
