@@ -20,17 +20,22 @@ Route::get('/', function () {
 Auth::routes();
 
 // route for homepage view
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')
+    ->name('home');
 
 
-// route for question form view
-Route::get('/insertquestion', 'InsertQuestionController@index')->name('insertquestion');
+// question form view
+Route::get('/insertquestion', 'InsertQuestionController@index')
+    ->name('insertquestion');
 
-// submit question route
-Route::post('ask', 'InsertQuestionController@ask')->name('ask');
+// submit question 
+Route::post('ask', 'InsertQuestionController@ask')
+    ->name('ask');
 
-//  view detail thread route
-Route::get('/thread', 'DetailThreadController@index')->name('thread');
+//  view detail thread
+Route::get('/thread', 'DetailThreadController@index')
+    ->name('thread');
 
-//  view user all question route
-Route::get('/userquestion', 'DetailThreadController@myquestion')->name('userquestion');
+//  view user all question
+Route::get('/userquestion', 'DetailThreadController@myquestion')
+    ->name('userquestion');

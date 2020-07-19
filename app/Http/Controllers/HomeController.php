@@ -23,7 +23,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    //  showing all question
+     
+    //  showing all question sorted by latest created
     public function index()
     {   
         $questions = DB::table('questions')

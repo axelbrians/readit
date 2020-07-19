@@ -15,6 +15,7 @@
     </div>
 </div>
 
+{{-- fetching all question data retrived from HomeController@index --}}
 @foreach ($questions as $question)
 <div class="container ">
     <div class="row">

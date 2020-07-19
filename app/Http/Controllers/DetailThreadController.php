@@ -9,12 +9,14 @@ use Illuminate\Support\Facades\Auth;
 class DetailThreadController extends Controller
 {
 
+    // return detailthread view
     public function index()
     {
         return view('detailthread');
  
     }
 
+    // passing all question correspond to current logged in user
     public function myquestion()
     {   
         $user_id = Auth::user()->id;
