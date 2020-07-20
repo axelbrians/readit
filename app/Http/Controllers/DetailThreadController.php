@@ -39,13 +39,9 @@ class DetailThreadController extends Controller
                         ->where('questions.id', '=', $id)
                         ->get();
 
-        // return (['questions' => $questions]);
-
-        // return view('detailthread', ['questions' => $questions]);
-
         $answers = DB::table('answers')
                         ->join('users', 'users.id', '=', 'answers.id_answer')
-                        ->join('questions', 'questions.id_question', '=', 'answers.id_question')
+                        ->where('answers.id_question', '=', 9)
                         ->get();
 
         return view('detailthread')

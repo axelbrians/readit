@@ -32,6 +32,14 @@ Route::get('/insertquestion', 'InsertController@insert_view')
 Route::post('ask', 'InsertController@ask')
     ->name('ask');
 
+// reply form view
+// Route::post('/insertreply', 'InsertController@reply_view')
+//     ->name('insertreply');
+
+// route to submit reply to correspond question
+Route::post('/reply', 'InsertController@reply')
+    ->name('reply');
+
 //  view detail thread
 Route::post('/thread', 'DetailThreadController@thread')
     ->name('thread');
