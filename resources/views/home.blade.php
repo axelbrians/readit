@@ -2,9 +2,17 @@
 
 @section('content')
 <div class="row justify-content-center align-items-center mt-3 mb-5">
-    <div class="col-3 mr-5">
+    <div class="col-3 mr-5 mt-5">
         <h1>Welcome to ReadIt, <strong>commander</strong>.</h1>
         <h2 class="text-justify">You can ask everything here. Before asking, check if similar question is already answered here.</h2>
+        <div class="my-5">
+            <form action="" method="GET">
+                <div class="form-group has-search">
+                    <span class="fa fa-search form-control-feedback fa-lg"></span>
+                    <input type="text" class="form-control" placeholder="Search questions">
+                </div>
+            </form>
+        </div>
     </div>
     <div class="col-3 ml-5">
         <!-- <a class="btn btn-primary" href="{{ route('insertquestion') }}">Ask a question!</a> -->
@@ -27,10 +35,7 @@
         </div>
     </div>
 </div>
-<div class="row justify-content-end">
-    <div></div>
-</div>
-
+<!-- Pagination -->
 
 {{-- fetching all question data retrived from HomeController@index --}}
 @foreach ($questions as $question)
