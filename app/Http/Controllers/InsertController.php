@@ -60,7 +60,7 @@ class InsertController extends Controller
 
         $answers = DB::table('answers')
                         ->join('users', 'users.id', '=', 'answers.id_answer')
-                        ->where('answers.id_question', '=', 9)
+                        ->where('answers.id_question', '=', $request->id_question)
                         ->get();
 
 
