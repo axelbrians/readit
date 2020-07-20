@@ -25,15 +25,15 @@ Route::get('/home', 'HomeController@index')
 
 
 // question form view
-Route::get('/insertquestion', 'InsertQuestionController@index')
+Route::get('/insertquestion', 'InsertController@insert_view')
     ->name('insertquestion');
 
 // submit question 
-Route::post('ask', 'InsertQuestionController@ask')
+Route::post('ask', 'InsertController@ask')
     ->name('ask');
 
 //  view detail thread
-Route::get('/thread', 'DetailThreadController@thread')
+Route::post('/thread', 'DetailThreadController@thread')
     ->name('thread');
 
 //  view user all question

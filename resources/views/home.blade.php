@@ -16,6 +16,7 @@
 </div>
 
 {{-- fetching all question data retrived from HomeController@index --}}
+
 @foreach ($questions as $question)
 <div class="container ">
     <div class="row">
@@ -42,7 +43,15 @@
                         <a href="javascript:void(0)" class="text-muted d-inline-flex align-items-center align-middle" data-abc="true"> <i class="fa fa-heart text-danger"></i>&nbsp; <span class="align-middle">445</span> </a> <span class="text-muted d-inline-flex align-items-center align-middle ml-4"> <i class="fa fa-eye text-muted fsize-3"></i>&nbsp; <span class="align-middle">14532</span> </span> 
                     </div>
                     <div class="px-4 pt-3"> 
-                        <a type="button" href ="{{ route('thread') }}"class="btn btn-primary"><i class="ion ion-md-create"></i> Detail</a>
+                        <form method="POST" action="{{ route('thread')}}"> 
+                            <input type="hidden" name="id" value="{{ $question->id }}">
+                            @csrf
+                                <button class="btn btn-primary">
+                                    {{ __('Detail') }}
+                                </button>
+                               
+                            </form>
+                        {{-- <a type="button" href ="{{ route('thread') }}" class="btn btn-primary"><i class="ion ion-md-create"></i> Detail</a> --}}
                     </div>
                 </div>
             </div>
