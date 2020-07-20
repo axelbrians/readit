@@ -33,7 +33,7 @@ Route::post('ask', 'InsertQuestionController@ask')
     ->name('ask');
 
 //  view detail thread
-Route::get('/thread', 'DetailThreadController@index')
+Route::get('/thread', 'DetailThreadController@thread')
     ->name('thread');
 
 //  view user all question
