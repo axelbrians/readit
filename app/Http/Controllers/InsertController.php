@@ -28,16 +28,6 @@ class InsertController extends Controller
         ]);
         return redirect()->route('home');
     }
-
-
-    // public function reply_view(Request $request)
-    // {   
-    //     $id_question = $request->question_id;
-        
-    //     // return $id_question;
-    //     return view('insertreply', ["id_question"=>$id_question]);
-    // }
-
     
     // function to submit reply
     public function reply(Request $request)

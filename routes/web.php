@@ -28,22 +28,27 @@ Route::get('/home', 'HomeController@index')
 Route::get('/insertquestion', 'InsertController@insert_view')
     ->name('insertquestion');
 
+
 // submit question 
 Route::post('ask', 'InsertController@ask')
     ->name('ask');
 
-// reply form view
-// Route::post('/insertreply', 'InsertController@reply_view')
-//     ->name('insertreply');
 
 // route to submit reply to correspond question
 Route::post('/reply', 'InsertController@reply')
     ->name('reply');
 
+
 //  view detail thread
 Route::post('/thread', 'DetailThreadController@thread')
     ->name('thread');
 
+
 //  view user all question
 Route::get('/userquestion', 'DetailThreadController@myquestion')
     ->name('userquestion');
+
+
+//  view user all answer
+Route::get('/useranswer', 'DetailThreadController@myanswer')
+    ->name('useranswer');

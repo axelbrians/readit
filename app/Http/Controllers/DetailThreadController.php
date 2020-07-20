@@ -8,13 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class DetailThreadController extends Controller
 {
-
-    // // return detailthread view
-    // public function index()
-    // {
-    //     return view('detailthread');
-    // }
-
     // passing all question correspond to current logged in user
     public function myquestion()
     {   
@@ -26,6 +19,19 @@ class DetailThreadController extends Controller
 
         return view('myquestion', ['questions' => $questions]);
     }
+
+    // passing all question correspond to current logged in user
+    public function myanswer()
+    {   
+        $user_id = Auth::user()->id;
+        $answers = DB::table('answers')
+                        ->join('users', 'users.id', '=', 'answers.id_question')
+                        ->where('id_answer', '=', $user_id)
+                        ->get();
+
+        return view('myanswer', ['answers' => $answers]);
+    }
+
 
     // passing the the detail of correspond question and all of its replies
     public function thread(Request $request)
