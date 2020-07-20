@@ -20,15 +20,16 @@ class DetailThreadController extends Controller
         return view('myquestion', ['questions' => $questions]);
     }
 
-    // passing all question correspond to current logged in user
+    // passing all answer correspond to current logged in user
     public function myanswer()
     {   
         $user_id = Auth::user()->id;
         $answers = DB::table('answers')
-                        ->join('users', 'users.id', '=', 'answers.id_question')
+                        ->join('users', 'users.id', '=', 'answers.id_answer')
                         ->where('id_answer', '=', $user_id)
                         ->get();
 
+        // return (['answers' => $answers]);
         return view('myanswer', ['answers' => $answers]);
     }
 
