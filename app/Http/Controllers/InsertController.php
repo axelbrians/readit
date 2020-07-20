@@ -10,7 +10,7 @@ class InsertQuestionController extends Controller
 {
 
     // 
-    public function index()
+    public function insert_view()
     {
         return view('insertquestion');
     }
@@ -25,4 +25,8 @@ class InsertQuestionController extends Controller
         ]);
         return redirect()->route('home');
     }
+
+    // public function reply(Request $request) {
+    //     return 0;
+    // }
 }
