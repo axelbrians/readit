@@ -46,7 +46,7 @@ class InsertController extends Controller
                         ->select('users.name', 'questions.created_at', 'questions.updated_at',
                                 'questions.title_question', 'questions.detail_question', 'questions.id')
                         ->where('questions.id', '=', $request->id_question)
-                        ->first();
+                        ->get();
 
         $answers = DB::table('answers')
                         ->join('users', 'users.id', '=', 'answers.id_answer')
@@ -56,9 +56,8 @@ class InsertController extends Controller
 
         return view('detailthread')
             ->with(['questions' => $questions])
-            ->with(['answers' => $answers])
-            ->with(['id_question'=>$id_question]);
+            ->with(['answers' => $answers]);
 
-        //return view('detailthread', ["id_question"=>$id_question]);
+        return view('detailthread', ["id_question"=>$id_question]);
     }
 }

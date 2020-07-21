@@ -5,7 +5,7 @@
 <div class="container   ">
     <div class="row justify-content-between">
         <div class="col-3">
-            <h3>Detail Question</h3>
+            <h3>Thread</h3>
         </div>
         {{-- <div class="col-3 ml-auto">
             <a class="btn btn-primary" href="{{ route('insertquestion') }}">Ask Question</a>
@@ -19,14 +19,15 @@
 
 {{-- fetching all question data retrived from HomeController@index --}}
 
-<!-- @foreach ($questions as $question) -->
+{{-- @foreach ($questions as $question) --}}
+
 <div class="container ">
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-header">
                     <div class="media flex-wrap w-100 align-items-center"> 
-                        <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">{{ $questions->name }}</a>
+                        <div class="media-body ml-3"> <a href="javascript:void(0)">{{ $questions->name }}</a>
                             <div class="text-muted small">{{ $questions->created_at }}</div>
                         </div>
                         <div class="text-muted small ml-3">
@@ -49,7 +50,7 @@
 
                     {{-- <div class="px-4 pt-3"> 
                         <form method="POST" action="{{ route('insertreply')}}"> 
-                            <input type="hidden" name="question_id" value="{{ $question->id }}">
+                            <input type="hidden" name="question_id" value="{{ $questions->id }}">
                             @csrf
                                 <button class="btn btn-primary">
                                     {{ __('Reply') }}
@@ -62,7 +63,8 @@
         </div>
     </div>
 </div>
-<!-- @endforeach -->
+
+{{-- @endforeach --}}
 
 
 

@@ -40,17 +40,24 @@
 {{-- fetching all question data retrived from HomeController@index --}}
 
 @foreach ($questions as $question)
-<div class="container ">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="card card-hoverable mb-4">
                 <div class="card-body">
-
-                    <a style="text-decoration: none; color: #000;" class="stretched-link"
-                        onclick="event.preventDefault();
-                            document.getElementById('view-thread').submit();">
+                    <form id={{ $question->id }} action="{{ route('thread') }}" method="POST" style="display: none;">
+                        @csrf
+                        <input type="hidden" name="id" value="">
+                    </form>
+                    <a style="text-decoration: none; color: #000;" class="stretched-link" name="card-link" data-questionid="{{ $question->id }}">
+                        <script>
+                            $("a[name=card-link]").on("click", function () {
+                                        var threadid = $(this).data('questionid');
+                                        $("input[type=hidden][name=id]").val(threadid);
+                                        $("#" + threadid).submit();
+                            });
+                        </script>
                         <div class="media flex-wrap w-100 align-items-center">
-                            <input type="hidden" name="id" value="{{ $question->id }}">
                             <div class="media-body truncate">
                                 <h2><strong>{{ $question->title_question }}</strong></h2>
                                 <div class="text-muted">
@@ -63,11 +70,21 @@
                             </div>
                         </div>
                     </a>
+                    <p>{{ $question->id }}</p>
 
-                    <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
+                    <!-- {{-- <form method="POST" action="#">
                         @csrf
-                        <input type="hidden" name="id" value="{{ $question->id }}">
-                    </form>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Your Answer</label>
+                            <input type="text" class="form-control" name ="the_answer" placeholder="{{ $question->id }}">
+                            
+                        </div>
+                    
+                        <button class="btn btn-primary">
+                            {{ __('Post Your Answer') }}
+                        </button>
+                    
+                    </form> --}} -->
                 </div>
             </div>
         </div>
