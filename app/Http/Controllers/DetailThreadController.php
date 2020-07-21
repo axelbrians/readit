@@ -38,19 +38,21 @@ class DetailThreadController extends Controller
     public function thread(Request $request)
     {
         $id = $request->id;
-
+        // return $id;
         $questions = DB::table('questions')
                         ->join('users', 'users.id', '=', 'questions.id_question')
                         ->select('users.name', 'questions.created_at', 'questions.updated_at',
-                                'questions.title_question', 'questions.detail_question', 'questions.id')
+                                'questions.title_question', 'questions.detail_question', 'questions.id as id')
                         ->where('questions.id', '=', $id)
-                        ->get();
+                        ->first();
 
         $answers = DB::table('answers')
                         ->join('users', 'users.id', '=', 'answers.id_answer')
                         ->where('answers.id_question', '=', $id)
                         ->get();
 
+        // return (['questions' => $questions]);
+        // return (['answers' => $answers]);
         return view('detailthread')
                 ->with(['questions' => $questions])
                 ->with(['answers' => $answers]);

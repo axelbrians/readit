@@ -46,7 +46,7 @@ class InsertController extends Controller
                         ->select('users.name', 'questions.created_at', 'questions.updated_at',
                                 'questions.title_question', 'questions.detail_question', 'questions.id')
                         ->where('questions.id', '=', $request->id_question)
-                        ->get();
+                        ->first();
 
         $answers = DB::table('answers')
                         ->join('users', 'users.id', '=', 'answers.id_answer')

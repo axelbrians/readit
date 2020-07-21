@@ -27,6 +27,10 @@ body {
     transition: all .2s
 }
 
+.card-hoverable:hover {
+    background-color: #DDD;
+}
+
 .card-header:first-child {
     border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0
 }
@@ -68,7 +72,6 @@ body {
 }
 
 a {
-    color: #E91E63;
     text-decoration: none !important;
     background-color: transparent
 }
@@ -80,4 +83,20 @@ a {
 
 .block-link {
     display: block;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
 }

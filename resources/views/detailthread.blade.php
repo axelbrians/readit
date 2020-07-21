@@ -5,7 +5,7 @@
 <div class="container   ">
     <div class="row justify-content-between">
         <div class="col-3">
-            <h3>Detail Question</h3>
+            <h3>Thread</h3>
         </div>
         {{-- <div class="col-3 ml-auto">
             <a class="btn btn-primary" href="{{ route('insertquestion') }}">Ask Question</a>
@@ -19,7 +19,7 @@
 
 {{-- fetching all question data retrived from HomeController@index --}}
 
-@foreach ($questions as $question)
+{{-- @foreach ($questions as $question) --}}
 
 <div class="container ">
     <div class="row">
@@ -27,8 +27,8 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <div class="media flex-wrap w-100 align-items-center"> 
-                        <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">{{ $question->name }}</a>
-                            <div class="text-muted small">{{ $question->created_at }}</div>
+                        <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">{{ $questions->name }}</a>
+                            <div class="text-muted small">{{ $questions->created_at }}</div>
                         </div>
                         <div class="text-muted small ml-3">
                             <div>Member since <strong>01/1/2019</strong></div>
@@ -38,11 +38,11 @@
                 </div>
                 
                 <div class="card-body">
-                    <p>{{ $question->title_question }}</p>
+                    <p>{{ $questions->title_question }}</p>
                 </div>
 
                 <div class="card-body">
-                    <p>{{ $question->detail_question }}</p>
+                    <p>{{ $questions->detail_question }}</p>
                 </div>
 
                 <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
@@ -64,7 +64,7 @@
     </div>
 </div>
 
-@endforeach
+{{-- @endforeach --}}
 
 
 
@@ -115,7 +115,7 @@
         <div class="form-group">
             <label for="formGroupExampleInput">Your Answer</label>
             <input type="text" class="form-control" name ="the_answer" placeholder="Reply box">
-            <input type="hidden" name="id_question" value="{{ $question->id }}">
+            <input type="hidden" name="id_question" value="{{ $questions->id }}">
             
         </div>
     

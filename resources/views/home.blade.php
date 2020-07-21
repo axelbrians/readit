@@ -43,14 +43,17 @@
 <div class="container ">
     <div class="row">
         <div class="col-md-12">
+            
             <div class="card card-hoverable mb-4">
                 <div class="card-body">
+                    
+                    <a style="text-decoration: none; color: #000;" class="">
 
-                    <a style="text-decoration: none; color: #000;" class="stretched-link"
-                        onclick="event.preventDefault();
-                            document.getElementById('view-thread').submit();">
+                    {{-- script for clicking whole a tag, still not working though--}}
+                    {{-- onclick="event.preventDefault();
+                    document.getElementById('view-thread').submit();" --}}
+
                         <div class="media flex-wrap w-100 align-items-center">
-                            <input type="hidden" name="id" value="{{ $question->id }}">
                             <div class="media-body truncate">
                                 <h2><strong>{{ $question->title_question }}</strong></h2>
                                 <div class="text-muted">
@@ -62,14 +65,29 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
 
-                    <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
-                        @csrf
-                        <input type="hidden" name="id" value="{{ $question->id }}">
-                    </form>
+                        {{-- <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $question->id }}">
+                        </form> --}}
+
+                        <form method="POST" action="{{ route('thread') }}">
+                            @csrf
+                            <div class="form-group">
+            
+                                <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
+                                
+                            </div>
+                        
+                            <button class="btn btn-primary" type="submit">
+                                {{ __('View Thread') }}
+                            </button>
+                        
+                        </form>
+                    </a>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>
