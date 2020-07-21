@@ -57,6 +57,10 @@ Route::get('/useranswer', 'DetailThreadController@myanswer')
 Route::get('/edit','EditController@edit')
     ->name('edit');
 
-// post user's question
+// update user's question
 Route::post('/update','EditController@update')
     ->name('update');
+
+// delete user's question
+Route::get('/delete','DeleteController@delete') 
+    ->name('delete');

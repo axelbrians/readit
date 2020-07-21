@@ -11,6 +11,7 @@
                     <span class="fa fa-search form-control-feedback fa-lg"></span>
                     <input type="text" class="form-control" placeholder="Search questions">
                     <a href="edit">Hello</a>
+                    <a href="delete">Delete</a>
                 </div>
             </form>
         </div>
