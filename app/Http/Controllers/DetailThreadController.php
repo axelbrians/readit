@@ -50,6 +50,7 @@ class DetailThreadController extends Controller
                         ->join('users', 'users.id', '=', 'answers.id_answer')
                         ->where('answers.id_question', '=', $id)
                         ->get();
+
         // return (['questions' => $questions]);
         // return (['answers' => $answers]);
         return view('detailthread')
