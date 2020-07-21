@@ -49,7 +49,6 @@
                         onclick="event.preventDefault();
                             document.getElementById('view-thread').submit();">
                         <div class="media flex-wrap w-100 align-items-center">
-                            <input type="hidden" name="id" value="{{ $question->id }}">
                             <div class="media-body truncate">
                                 <h2><strong>{{ $question->title_question }}</strong></h2>
                                 <div class="text-muted">
@@ -62,11 +61,25 @@
                             </div>
                         </div>
                     </a>
-
+                    {{-- <p>{{ $question->id }}</p> --}}
                     <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
                         @csrf
                         <input type="hidden" name="id" value="{{ $question->id }}">
-                    </form>
+                    {{-- </form>
+
+                    <form method="POST" action="#">
+                        @csrf
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Your Answer</label>
+                            <input type="text" class="form-control" name ="the_answer" placeholder="{{ $question->id }}">
+                            
+                        </div>
+                    
+                        <button class="btn btn-primary">
+                            {{ __('Post Your Answer') }}
+                        </button>
+                    
+                    </form> --}}
                 </div>
             </div>
         </div>
