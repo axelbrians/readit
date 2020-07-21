@@ -4,7 +4,7 @@
 
 
 <div class="container">
-<form method="POST" action="{{ route('qupdate') }}">
+<form method="POST" action="{{ route('update') }}">
     @csrf
     <div class="form-group">
         <label for="formGroupExampleInput">Title</label>

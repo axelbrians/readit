@@ -54,9 +54,9 @@ Route::get('/useranswer', 'DetailThreadController@myanswer')
     ->name('useranswer');
 
 // edit user's question
-Route::get('/edit','QEditController@edit')
+Route::get('/edit','EditController@edit')
     ->name('edit');
 
 // post user's question
-Route::post('/update','QEditController@update')
+Route::post('/update','EditController@update')
     ->name('update');

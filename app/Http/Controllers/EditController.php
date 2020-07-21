@@ -16,7 +16,7 @@ class EditController extends Controller
         $question = DB::table('questions')
             ->where('id_question', '=', $user_id)
             ->first();
-        return view ('qedit',['question'=>$question]);
+        return view ('edit',['question'=>$question]);
     }
 
     public function update(Request $request)
