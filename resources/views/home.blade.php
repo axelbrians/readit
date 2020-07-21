@@ -19,7 +19,7 @@
         <div class="card">
             <div class="card-body">
                 <h2 class="text-center mb-4">Ask the community!</h2>
-                <form action="{{ route('ask') }}" method="post">
+                <form action="{{ route('ask') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <input type="text" class="form-control" name ="title_question" placeholder="What is up? Tell us.">
@@ -38,14 +38,19 @@
 <!-- Pagination -->
 
 {{-- fetching all question data retrived from HomeController@index --}}
+
 @foreach ($questions as $question)
 <div class="container ">
     <div class="row">
         <div class="col-md-12">
             <div class="card card-hoverable mb-4">
                 <div class="card-body">
-                    <a href="{{ route('thread') }}" style="text-decoration: none; color: #000;" class="stretched-link">
+
+                    <a style="text-decoration: none; color: #000;" class="stretched-link"
+                        onclick="event.preventDefault();
+                            document.getElementById('view-thread').submit();">
                         <div class="media flex-wrap w-100 align-items-center">
+                            <input type="hidden" name="id" value="{{ $question->id }}">
                             <div class="media-body truncate">
                                 <h2><strong>{{ $question->title_question }}</strong></h2>
                                 <div class="text-muted">
@@ -57,7 +62,12 @@
                                 </div>
                             </div>
                         </div>
-                    </a>         
+                    </a>
+
+                    <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $question->id }}">
+                    </form>
                 </div>
             </div>
         </div>
