@@ -1,17 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container   ">
-    <div class="row justify-content-between">
-        <div class="col-3">
-            <h3>Question List</h3>
-        </div>
-        <div class="col-3 ml-auto">
-            <a class="btn btn-primary" href="{{ route('insertquestion') }}">Ask Question</a>
+<div class="row justify-content-center align-items-center mt-3 mb-5">
+    <div class="col-3 mr-5 mt-5">
+        <h1>Welcome to ReadIt, <strong>commander</strong>.</h1>
+        <h2 class="text-justify">You can ask everything here. Before asking, check if similar question is already answered here.</h2>
+        <div class="my-5">
+            <form action="" method="GET">
+                <div class="form-group has-search">
+                    <span class="fa fa-search form-control-feedback fa-lg"></span>
+                    <input type="text" class="form-control" placeholder="Search questions">
+                    <a href="edit">Hello</a>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="row justify-content-end">
-        <div></div>
+    <div class="col-3 ml-5">
+        <!-- <a class="btn btn-primary" href="{{ route('insertquestion') }}">Ask a question!</a> -->
+        <div class="card">
+            <div class="card-body">
+                <h2 class="text-center mb-4">Ask the community!</h2>
+                <form action="{{ route('ask') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" class="form-control" name ="title_question" placeholder="What is up? Tell us.">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="detail_question" class="form-control" id="detail_question" cols="15" rows="5" style="resize: none;">Provide details for your issues/questions.</textarea>
+                    </div>
+                    <button class="btn btn-outline-primary btn-block">
+                        {{ __('Submit') }}
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -21,40 +43,31 @@
 <div class="container ">
     <div class="row">
         <div class="col-md-12">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <div class="media flex-wrap w-100 align-items-center"> 
-                        <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">{{ $question->name }}</a>
-                            <div class="text-muted small">{{ $question->created_at }}</div>
-                        </div>
-                        <div class="text-muted small ml-3">
-                            <div>Member since <strong>01/1/2019</strong></div>
-                            <div><strong>134</strong> posts</div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="card card-hoverable mb-4">
                 <div class="card-body">
-                    <p>{{ $question->title_question }}</p>
-                </div>
 
-                
-
-                <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
-                    <div class="px-4 pt-3">    
-                        <a href="javascript:void(0)" class="text-muted d-inline-flex align-items-center align-middle" data-abc="true"> <i class="fa fa-heart text-danger"></i>&nbsp; <span class="align-middle">445</span> </a> <span class="text-muted d-inline-flex align-items-center align-middle ml-4"> <i class="fa fa-eye text-muted fsize-3"></i>&nbsp; <span class="align-middle">14532</span> </span> 
-                    </div>
-
-                    <div class="px-4 pt-3"> 
-                        <form method="POST" action="{{ route('thread')}}"> 
+                    <a style="text-decoration: none; color: #000;" class="stretched-link"
+                        onclick="event.preventDefault();
+                            document.getElementById('view-thread').submit();">
+                        <div class="media flex-wrap w-100 align-items-center">
                             <input type="hidden" name="id" value="{{ $question->id }}">
-                            @csrf
-                                <button class="btn btn-primary">
-                                    {{ __('Detail') }}
-                                </button>
-                               
-                            </form>
-                    </div>
+                            <div class="media-body truncate">
+                                <h2><strong>{{ $question->title_question }}</strong></h2>
+                                <div class="text-muted">
+                                    <a href="javascript:void(0)"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ $question->name }}</a> | 
+                                    Posted on {{ Carbon\Carbon::parse($question->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                                </div>
+                                <div class="text-muted">
+                                    <div>Member since <strong>{{ Carbon\Carbon::parse($question->user_created_at)->timezone("Asia/Jakarta")->format('M d, Y') }}</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $question->id }}">
+                    </form>
                 </div>
             </div>
         </div>

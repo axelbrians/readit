@@ -52,3 +52,11 @@ Route::get('/userquestion', 'DetailThreadController@myquestion')
 //  view user all answer
 Route::get('/useranswer', 'DetailThreadController@myanswer')
     ->name('useranswer');
+
+// edit user's question
+Route::get('/edit','QEditController@edit')
+    ->name('edit');
+
+// post user's question
+Route::post('/update','QEditController@update')
+    ->name('update');
