@@ -41,22 +41,42 @@ class InsertController extends Controller
             'id_answer' => $user_id
         ]);
 
+        // $questions = DB::table('questions')
+        //                 ->join('users', 'users.id', '=', 'questions.id_question')
+        //                 ->select('users.name', 'questions.created_at', 'questions.updated_at',
+        //                         'questions.title_question', 'questions.detail_question', 'questions.id')
+        //                 ->where('questions.id', '=', )
+        //                 ->first();
+
+        // $answers = DB::table('answers')
+        //                 ->join('users', 'users.id', '=', 'answers.id_answer')
+        //                 ->where('answers.id_question', '=', )
+        //                 ->get();
+
         $questions = DB::table('questions')
                         ->join('users', 'users.id', '=', 'questions.id_question')
-                        ->select('users.name', 'questions.created_at', 'questions.updated_at',
-                                'questions.title_question', 'questions.detail_question', 'questions.id')
+                        ->select('users.name as name', 'questions.created_at', 'questions.updated_at',
+                                'questions.title_question', 'questions.detail_question', 'questions.id as id', 'users.created_at as user_created_at')
                         ->where('questions.id', '=', $request->id_question)
-                        ->get();
+                        ->first();
 
         $answers = DB::table('answers')
                         ->join('users', 'users.id', '=', 'answers.id_answer')
+                        ->select('users.name as name', 'answers.created_at', 'answers.updated_at',
+                                'answers.id_question', 'answers.id as id', 'answers.id_answer', 'users.created_at as user_created_at', 'answers.the_answer')
                         ->where('answers.id_question', '=', $request->id_question)
                         ->get();
+
+        $count = DB::table('answers')
+                        ->select('*')
+                        ->where('answers.id_question', '=', $id)
+                        ->count();
 
 
         return view('detailthread')
             ->with(['questions' => $questions])
-            ->with(['answers' => $answers]);
+            ->with(['answers' => $answers])
+            ->with(['count' => $count]);
 
         return view('detailthread', ["id_question"=>$id_question]);
     }
