@@ -10,8 +10,6 @@
                 <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback fa-lg"></span>
                     <input type="text" class="form-control" placeholder="Search questions">
-                    <a href="edit">Hello</a>
-                    <a href="delete">Delete</a>
                 </div>
             </form>
         </div>
@@ -83,7 +81,41 @@
                             <button class="btn btn-primary" type="submit">
                                 {{ __('View Thread') }}
                             </button>
+                        </form>
+
+                        {{-- <form id="edit-thread" action="{{ route('edit') }}" method="POST" style="display: none;">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $question->id }}">
+                        </form> --}}
+
+                        <form method="POST" action="{{ route('edit') }}">
+                            @csrf
+                            <div class="form-group">
+            
+                                <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
+                                
+                            </div>
                         
+                            <button class="btn btn-warning" type="submit">
+                                {{ __('Edit Thread') }}
+                            </button>
+                        </form>
+
+                        {{-- <form id="delete-thread" action="{{ route('delete') }}" method="POST" style="display: none;">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $question->id }}">
+                        </form> --}}
+                        <form method="POST" action="{{ route('delete') }}">
+                            @csrf
+                            <div class="form-group">
+            
+                                <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
+                                
+                            </div>
+                        
+                            <button class="btn btn-danger" type="submit">
+                                {{ __('Delete Thread') }}
+                            </button>
                         </form>
                     </a>
                 </div>

@@ -54,7 +54,7 @@ Route::get('/useranswer', 'DetailThreadController@myanswer')
     ->name('useranswer');
 
 // edit user's question
-Route::get('/edit','EditController@edit')
+Route::post('/edit','EditController@edit')
     ->name('edit');
 
 // update user's question
@@ -62,5 +62,5 @@ Route::post('/update','EditController@update')
     ->name('update');
 
 // delete user's question
-Route::get('/delete','DeleteController@delete') 
+Route::post('/delete','DeleteController@delete') 
     ->name('delete');
