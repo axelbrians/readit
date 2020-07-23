@@ -24,13 +24,9 @@ class EditController extends Controller
     {
         $id =$request->id;
         $questions = DB::table('questions')
-                    ->join('users', 'users.id',  'questions.id_question')
-                    ->select('users.name', 'questions.created_at', 'questions.updated_at',
-                            'questions.title_question', 'questions.detail_question', 'questions.id as id')
                     ->where('questions.id',  $id)
-                    ->first();
-        $question= DB::table('questions')->update(['title_question'=>$request->title_question,
-                                                   'detail_question'=>$request->detail_question]);
+                    ->update(['title_question'=>$request->title_question,
+                            'detail_question'=>$request->detail_question]);
         return redirect('/home');
     }
 }

@@ -6,6 +6,9 @@
 <div class="container">
 <form method="POST" action="{{ route('update') }}">
     @csrf
+    
+    <input type="hidden" class="form-control" name ="id" placeholder="Example input" value="{{$question->id}}">
+
     <div class="form-group">
         <label for="formGroupExampleInput">Title</label>
         <input type="text" class="form-control" name ="title_question" placeholder="Example input" value="{{$question->title_question}}">
