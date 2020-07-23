@@ -25,7 +25,7 @@
                         <input type="text" class="form-control" name ="title_question" placeholder="What is up? Tell us.">
                     </div>
                     <div class="form-group">
-                        <textarea name="detail_question" class="form-control" id="detail_question" cols="15" rows="5" style="resize: none;">Provide details for your issues/questions.</textarea>
+                        <textarea name="detail_question" class="form-control" id="detail_question" cols="15" rows="5" style="resize: none;" placeholder="Provide details for your issues/questions."></textarea>
                     </div>
                     <button class="btn btn-outline-primary btn-block">
                         {{ __('Submit') }}
@@ -35,11 +35,12 @@
         </div>
     </div>
 </div>
+<!-- Pagination -->
 
 {{-- fetching all question data retrived from HomeController@index --}}
 
 @foreach ($questions as $question)
-<div class="container ">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             
@@ -81,7 +82,41 @@
                             <button class="btn btn-primary" type="submit">
                                 {{ __('View Thread') }}
                             </button>
+                        </form>
+
+                        {{-- <form id="edit-thread" action="{{ route('edit') }}" method="POST" style="display: none;">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $question->id }}">
+                        </form> --}}
+
+                        <form method="POST" action="{{ route('edit') }}">
+                            @csrf
+                            <div class="form-group">
+            
+                                <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
+                                
+                            </div>
                         
+                            <button class="btn btn-warning" type="submit">
+                                {{ __('Edit Thread') }}
+                            </button>
+                        </form>
+
+                        {{-- <form id="delete-thread" action="{{ route('delete') }}" method="POST" style="display: none;">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $question->id }}">
+                        </form> --}}
+                        <form method="POST" action="{{ route('delete') }}">
+                            @csrf
+                            <div class="form-group">
+            
+                                <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
+                                
+                            </div>
+                        
+                            <button class="btn btn-danger" type="submit">
+                                {{ __('Delete Thread') }}
+                            </button>
                         </form>
                     </a>
                 </div>

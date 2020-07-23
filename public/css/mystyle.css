@@ -14,7 +14,9 @@ body {
     line-height: 1.5;
     color: #495057;
     text-align: left;
-    background-color: #eef1f3
+    /* background-color: #eef1f3; */
+    background: linear-gradient(#F2F2F2, #EEE);
+    min-height: 100vh;
 }
 
 .mt-100 {
@@ -99,4 +101,38 @@ a {
     text-align: center;
     pointer-events: none;
     color: #aaa;
+}
+
+.forum-content {
+    float: left;
+    padding: 1rem 1rem;
+}
+
+.user-detail {
+    padding: 1rem 2rem 1rem 1.75rem;
+}
+
+.content-detail {
+    min-width: 78%;
+    max-width: 78%;
+    padding-top: 0;
+    border-left: #CCC solid 1px;
+    min-height: 25vh;
+}
+
+.thread-title {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+hr {
+    margin-top: .45rem;
+}
+
+.footer {
+    min-height: 8rem;
+}
+
+.copyright {
+    padding: 1.2rem;
 }
