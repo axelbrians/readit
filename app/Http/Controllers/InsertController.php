@@ -34,6 +34,8 @@ class InsertController extends Controller
     {   
         // return $request->id_question;
         $user_id = Auth::user()->id;
+        
+        
 
         Answer::create([
             'the_answer' => $request->the_answer,
@@ -69,15 +71,20 @@ class InsertController extends Controller
 
         $count = DB::table('answers')
                         ->select('*')
-                        ->where('answers.id_question', '=', $id)
+                        ->where('answers.id_question', '=', $request->id_question)
                         ->count();
 
 
-        return view('detailthread')
+        return view('placeholder')
+            ->with('id_question', $request->id_question)
             ->with(['questions' => $questions])
             ->with(['answers' => $answers])
             ->with(['count' => $count]);
-
-        return view('detailthread', ["id_question"=>$id_question]);
+        
+        // error return value
+        // return view('detailthread')
+        //     ->with(['questions' => $questions])
+        //     ->with(['answers' => $answers])
+        //     ->with(['count' => $count]);
     }
 }

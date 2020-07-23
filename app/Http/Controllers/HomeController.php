@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,8 @@ class HomeController extends Controller
     //  showing all question sorted by latest created
     public function index()
     {   
+        $user_id = Auth::user()->id;
+
         $questions = DB::table('questions')
                         ->join('users', 'users.id', '=', 'questions.id_question')
                         ->select('users.name', 'questions.id_question', 'questions.created_at as created_at', 'questions.updated_at', 'questions.title_question', 'questions.detail_question', 'users.created_at as user_created_at', 'questions.id as id')
@@ -34,6 +37,8 @@ class HomeController extends Controller
                         ->latest('questions.created_at')
                         ->get();
 
-        return view('home', ['questions' => $questions]);
+        return view('home')
+                ->with(['questions' => $questions])
+                ->with('user_id', $user_id);
     }
 }

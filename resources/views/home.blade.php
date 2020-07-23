@@ -84,40 +84,44 @@
                             </button>
                         </form>
 
-                        {{-- <form id="edit-thread" action="{{ route('edit') }}" method="POST" style="display: none;">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $question->id }}">
-                        </form> --}}
+                        {{-- if for deciding edit and delte button --}}
+                        @if($user_id == $question->id_question)
+                            {{-- <form id="edit-thread" action="{{ route('edit') }}" method="POST" style="display: none;">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $question->id }}">
+                            </form> --}}
 
-                        <form method="POST" action="{{ route('edit') }}">
-                            @csrf
-                            <div class="form-group">
-            
-                                <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
-                                
-                            </div>
-                        
-                            <button class="btn btn-warning" type="submit">
-                                {{ __('Edit Thread') }}
-                            </button>
-                        </form>
+                            <form method="POST" action="{{ route('edit') }}">
+                                @csrf
+                                <div class="form-group">
+                
+                                    <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
+                                    
+                                </div>
+                            
+                                <button class="btn btn-warning" type="submit">
+                                    {{ __('Edit Thread') }}
+                                </button>
+                            </form>
 
-                        {{-- <form id="delete-thread" action="{{ route('delete') }}" method="POST" style="display: none;">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $question->id }}">
-                        </form> --}}
-                        <form method="POST" action="{{ route('delete') }}">
-                            @csrf
-                            <div class="form-group">
-            
-                                <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
-                                
-                            </div>
+                            {{-- <form id="delete-thread" action="{{ route('delete') }}" method="POST" style="display: none;">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $question->id }}">
+                            </form> --}}
+                            <form method="POST" action="{{ route('delete') }}">
+                                @csrf
+                                <div class="form-group">
+                
+                                    <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
+                                    
+                                </div>
+                            
+                                <button class="btn btn-danger" type="submit">
+                                    {{ __('Delete Thread') }}
+                                </button>
+                            </form>
+                        @endif
                         
-                            <button class="btn btn-danger" type="submit">
-                                {{ __('Delete Thread') }}
-                            </button>
-                        </form>
                     </a>
                 </div>
             </div>

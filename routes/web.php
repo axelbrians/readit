@@ -64,3 +64,4 @@ Route::post('/update','EditController@update')
 // delete user's question
 Route::post('/delete','DeleteController@delete') 
     ->name('delete');
+
