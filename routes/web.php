@@ -24,9 +24,9 @@ Route::get('/home', 'HomeController@index')
     ->name('home');
 
 
-// question form view
-Route::get('/insertquestion', 'InsertController@insert_view')
-    ->name('insertquestion');
+    // search
+Route::post('/home', 'HomeController@search')
+    ->name('search');
 
 
 // submit question 
