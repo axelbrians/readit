@@ -6,16 +6,17 @@
         <h1>Welcome to ReadIt, <strong>commander</strong>.</h1>
         <h2 class="text-justify">You can ask everything here. Before asking, check if similar question is already answered here.</h2>
         <div class="my-5">
-            <form action="" method="GET">
+            <form action="{{ route('search') }}" method="POST">
+                @csrf
                 <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback fa-lg"></span>
-                    <input type="text" class="form-control" placeholder="Search questions">
+                    <input type="text" name="key" class="form-control" placeholder="Search questions">
                 </div>
             </form>
         </div>
     </div>
+
     <div class="col-3 ml-5">
-        <!-- <a class="btn btn-primary" href="{{ route('insertquestion') }}">Ask a question!</a> -->
         <div class="card">
             <div class="card-body">
                 <h2 class="text-center mb-4">Ask the community!</h2>
