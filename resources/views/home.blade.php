@@ -132,5 +132,6 @@
 </div>
 @endforeach
 
+{{ $questions->links() }}
 
 @endsection
