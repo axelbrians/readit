@@ -132,6 +132,9 @@
 </div>
 @endforeach
 
-{{ $questions->links() }}
-
+<div class="row justify-content-center">
+    <div class="">
+    {{ $questions->links() }}
+    </div>
+</div>
 @endsection
