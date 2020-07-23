@@ -82,7 +82,7 @@
                                     
 
                                     <a class="dropdown-item" href="{{ route('userquestion') }}">
-                                        {{ __('My Question') }}
+                                        {{ __('My Thread') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('useranswer') }}">

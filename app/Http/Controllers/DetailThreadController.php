@@ -64,6 +64,7 @@ class DetailThreadController extends Controller
 
         // return (['questions' => $questions]);
         // return (['answers' => $answers]);
+        
         return view('detailthread')
                 ->with(['questions' => $questions])
                 ->with(['answers' => $answers])
