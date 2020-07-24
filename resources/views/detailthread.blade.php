@@ -114,6 +114,7 @@
     </div>
 </div>
 
+<a name="{{ sprintf('%06d', $answer->id) }}"></a>
 <div class="container">
     <div class="row align-items-start">
         <div class="col-md-12">
