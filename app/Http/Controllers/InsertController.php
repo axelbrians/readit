@@ -27,7 +27,13 @@ class InsertController extends Controller
             'detail_question' => $request->detail_question,
             'id_question' => $user_id
         ]);
-        return redirect()->route('home');
+
+        $last_id = DB::table('questions')
+                ->select('questions.id')
+                ->latest()
+                ->first();
+
+        return redirect('thread/'. $last_id->id);
     }
     
 
@@ -43,36 +49,6 @@ class InsertController extends Controller
             'id_answer' => $user_id
         ]);
 
-        $questions = DB::table('questions')
-                        ->join('users', 'users.id', '=', 'questions.id_question')
-                        ->select('users.name as name', 'questions.created_at', 'questions.updated_at',
-                                'questions.title_question', 'questions.detail_question', 'questions.id as id', 'users.created_at as user_created_at')
-                        ->where('questions.id', '=', $request->id_question)
-                        ->first();
-
-        $answers = DB::table('answers')
-                        ->join('users', 'users.id', '=', 'answers.id_answer')
-                        ->select('users.name as name', 'answers.created_at', 'answers.updated_at',
-                                'answers.id_question', 'answers.id as id', 'answers.id_answer', 'users.created_at as user_created_at', 'answers.the_answer')
-                        ->where('answers.id_question', '=', $request->id_question)
-                        ->get();
-
-        $count = DB::table('answers')
-                        ->select('*')
-                        ->where('answers.id_question', '=', $request->id_question)
-                        ->count();
-
-
-        return view('placeholder')
-            ->with('id_question', $request->id_question)
-            ->with(['questions' => $questions])
-            ->with(['answers' => $answers])
-            ->with(['count' => $count]);
-        
-        // error return value
-        // return view('detailthread')
-        //     ->with(['questions' => $questions])
-        //     ->with(['answers' => $answers])
-        //     ->with(['count' => $count]);
+        return redirect('thread/'. $request->id_question);
     }
 }

@@ -6,12 +6,12 @@
         <h1>Welcome to ReadIt, <strong>commander</strong>.</h1>
         <h2 class="text-justify">You can ask everything here. Before asking, check if similar question is already answered here.</h2>
         <div class="my-5">
-            <form action="{{ route('search') }}" method="POST">
-                @csrf
+            <form action="{{ route('search') }}" method="GET">
                 <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback fa-lg"></span>
                     <input type="text" name="key" class="form-control" placeholder="Search questions">
                 </div>
+                @csrf
             </form>
         </div>
     </div>
@@ -36,7 +36,6 @@
         </div>
     </div>
 </div>
-<!-- Pagination -->
 
 {{-- fetching all question data retrived from HomeController@index --}}
 
@@ -48,7 +47,7 @@
             <div class="card card-hoverable mb-4">
                 <div class="card-body">
                     
-                    <a style="text-decoration: none; color: #000;" class="">
+                    <a style="text-decoration: none; color: #000;" class="stretched-link" href="{{ route('thread', $question->id) }}">
 
                     {{-- script for clicking whole a tag, still not working though--}}
                     {{-- onclick="event.preventDefault();
@@ -68,61 +67,9 @@
                         </div>
 
                         {{-- <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
-                            @csrf
                             <input type="hidden" name="id" value="{{ $question->id }}">
-                        </form> --}}
-
-                        <form method="POST" action="{{ route('thread') }}">
                             @csrf
-                            <div class="form-group">
-            
-                                <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
-                                
-                            </div>
-                        
-                            <button class="btn btn-primary" type="submit">
-                                {{ __('View Thread') }}
-                            </button>
-                        </form>
-
-                        {{-- if for deciding edit and delte button --}}
-                        @if($user_id == $question->id_question)
-                            {{-- <form id="edit-thread" action="{{ route('edit') }}" method="POST" style="display: none;">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $question->id }}">
-                            </form> --}}
-
-                            <form method="POST" action="{{ route('edit') }}">
-                                @csrf
-                                <div class="form-group">
-                
-                                    <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
-                                    
-                                </div>
-                            
-                                <button class="btn btn-warning" type="submit">
-                                    {{ __('Edit Thread') }}
-                                </button>
-                            </form>
-
-                            {{-- <form id="delete-thread" action="{{ route('delete') }}" method="POST" style="display: none;">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $question->id }}">
-                            </form> --}}
-                            <form method="POST" action="{{ route('delete') }}">
-                                @csrf
-                                <div class="form-group">
-                
-                                    <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
-                                    
-                                </div>
-                            
-                                <button class="btn btn-danger" type="submit">
-                                    {{ __('Delete Thread') }}
-                                </button>
-                            </form>
-                        @endif
-                        
+                        </form> --}}                
                     </a>
                 </div>
             </div>
@@ -132,9 +79,12 @@
 </div>
 @endforeach
 
-<div class="row justify-content-center">
-    <div class="">
-    {{ $questions->links() }}
+<!-- Pagination -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="container d-flex justify-content-end">
+            {{ $questions->links() }}
+        </div>
     </div>
 </div>
 @endsection

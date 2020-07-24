@@ -38,7 +38,7 @@
         }
     </style>
 </head>
-<body>
+<body style="overflow-x: hidden;">
     <div id="app">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container">
@@ -80,14 +80,20 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
+                                    <span>
+                                        <form action="{{ route('myprofile') }}" method="post" id="myprofile-form">
+                                            @csrf
+                                            <a class="dropdown-item" href="javascript:{}" onclick="document.getElementById('myprofile-form').submit();">{{ __('My Profile') }}</a>
+                                        </form>
+                                    </span>
 
-                                    <a class="dropdown-item" href="{{ route('userquestion') }}">
+                                    <!-- <a class="dropdown-item" href="{{ route('userquestion') }}">
                                         {{ __('My Thread') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('useranswer') }}">
                                         {{ __('My Answer') }}
-                                    </a>
+                                    </a> -->
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
