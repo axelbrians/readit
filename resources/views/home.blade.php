@@ -48,7 +48,7 @@
             <div class="card card-hoverable mb-4">
                 <div class="card-body">
                     
-                    <a style="text-decoration: none; color: #000;" class="">
+                    <a style="text-decoration: none; color: #000;" class="stretched-link" href="{{ route('thread', $question->id) }}">
 
                     {{-- script for clicking whole a tag, still not working though--}}
                     {{-- onclick="event.preventDefault();
@@ -70,59 +70,7 @@
                         {{-- <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
                             @csrf
                             <input type="hidden" name="id" value="{{ $question->id }}">
-                        </form> --}}
-
-                        <form method="POST" action="{{ route('thread') }}">
-                            @csrf
-                            <div class="form-group">
-            
-                                <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
-                                
-                            </div>
-                        
-                            <button class="btn btn-primary" type="submit">
-                                {{ __('View Thread') }}
-                            </button>
-                        </form>
-
-                        {{-- if for deciding edit and delte button --}}
-                        @if($user_id == $question->id_question)
-                            {{-- <form id="edit-thread" action="{{ route('edit') }}" method="POST" style="display: none;">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $question->id }}">
-                            </form> --}}
-
-                            <form method="POST" action="{{ route('edit') }}">
-                                @csrf
-                                <div class="form-group">
-                
-                                    <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
-                                    
-                                </div>
-                            
-                                <button class="btn btn-warning" type="submit">
-                                    {{ __('Edit Thread') }}
-                                </button>
-                            </form>
-
-                            {{-- <form id="delete-thread" action="{{ route('delete') }}" method="POST" style="display: none;">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $question->id }}">
-                            </form> --}}
-                            <form method="POST" action="{{ route('delete') }}">
-                                @csrf
-                                <div class="form-group">
-                
-                                    <input type="hidden" class="form-control" name ="id" value="{{ $question->id }}">
-                                    
-                                </div>
-                            
-                                <button class="btn btn-danger" type="submit">
-                                    {{ __('Delete Thread') }}
-                                </button>
-                            </form>
-                        @endif
-                        
+                        </form> --}}                
                     </a>
                 </div>
             </div>

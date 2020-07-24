@@ -33,8 +33,10 @@
                         <div>Member since <strong>{{ Carbon\Carbon::parse($questions->user_created_at)->timezone("Asia/Jakarta")->format('M d, Y') }}</strong></div>
                     </div>
                     <div class="forum-content content-detail">
-                        <div style="font-size: .7rem;">
-                            Edited {{ Carbon\Carbon::parse($questions->updated_at)->timezone("Asia/Jakarta")->format('M d, Y') }}
+                        <div class="d-flex justify-content-between" style="font-size: .7rem;">
+                            <div>
+                                Edited {{ Carbon\Carbon::parse($questions->updated_at)->timezone("Asia/Jakarta")->format('M d, Y') }}
+                            </div>
                         </div>
                         <hr class="w-100">
                         <div style="font-size: 1.1rem;">
@@ -42,10 +44,19 @@
                         </div>
                     </div>
                 </div>
+                @if ($user_id == $questions->id_question)
+                <div class="card-footer">
+                    <div class="container d-flex justify-content-end">
+                        <a href="{{ route('edit_thread', $questions->id) }}" class="pr-3">Edit Thread <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <a href="{{ route('delete_thread', $questions->id) }}">Delete Thread <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>
 </div>
+
 
 {{-- Fetching all answers data retrieved from HomeController@index --}}
 @foreach ($answers as $answer)
@@ -78,6 +89,15 @@
                         </div>
                     </div>
                 </div>
+                @if ($user_id == $answer->id_answer)
+                <div class="card-footer">
+                    <div class="container d-flex justify-content-end">
+                        <a href="{{route('edit_reply', ['answer_id'=>$answer->id, 'id'=>$questions->id])}}" class="pr-3">Edit Reply <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        {{-- route('edit_reply', [$questions->id, $answer->id]) --}}
+                        <a href="{{ route('delete_reply', ['answer_id'=>$answer->id, 'id'=>$questions->id]) }}">Delete Reply <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>

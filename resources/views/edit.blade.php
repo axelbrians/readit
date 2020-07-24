@@ -4,9 +4,9 @@
 
 
 <div class="container">
-<form method="POST" action="{{ route('update') }}">
+<form method="POST" action="{{ route('update_thread') }}">
+    @method('PUT')
     @csrf
-    
     <input type="hidden" class="form-control" name ="id" placeholder="Example input" value="{{$question->id}}">
 
     <div class="form-group">
