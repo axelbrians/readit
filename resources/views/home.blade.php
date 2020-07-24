@@ -6,12 +6,12 @@
         <h1>Welcome to ReadIt, <strong>commander</strong>.</h1>
         <h2 class="text-justify">You can ask everything here. Before asking, check if similar question is already answered here.</h2>
         <div class="my-5">
-            <form action="{{ route('search') }}" method="POST">
-                @csrf
+            <form action="{{ route('search') }}" method="GET">
                 <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback fa-lg"></span>
                     <input type="text" name="key" class="form-control" placeholder="Search questions">
                 </div>
+                @csrf
             </form>
         </div>
     </div>
@@ -68,8 +68,8 @@
                         </div>
 
                         {{-- <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
-                            @csrf
                             <input type="hidden" name="id" value="{{ $question->id }}">
+                            @csrf
                         </form> --}}                
                     </a>
                 </div>

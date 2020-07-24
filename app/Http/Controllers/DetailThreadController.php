@@ -8,6 +8,22 @@ use Illuminate\Support\Facades\Auth;
 
 class DetailThreadController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    
     // passing all question correspond to current logged in user
     public function myquestion()
     {   

@@ -24,8 +24,8 @@ Route::get('/home', 'HomeController@index')
     ->name('home');
 
 
-    // search
-Route::post('/home', 'HomeController@search')
+// search
+Route::get('/home/search', 'HomeController@search')
     ->name('search');
 
 
