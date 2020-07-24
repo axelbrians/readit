@@ -24,8 +24,8 @@ Route::get('/home', 'HomeController@index')
     ->name('home');
 
 
-    // search
-Route::post('/home', 'HomeController@search')
+// search
+Route::get('/home/search', 'HomeController@search')
     ->name('search');
 
 
@@ -40,7 +40,7 @@ Route::post('/reply', 'InsertController@reply')
 
 
 //  view detail thread
-Route::post('/thread', 'DetailThreadController@thread')
+Route::get('/thread/{id}', 'DetailThreadController@thread')
     ->name('thread');
 
 
@@ -54,14 +54,26 @@ Route::get('/useranswer', 'DetailThreadController@myanswer')
     ->name('useranswer');
 
 // edit user's question
-Route::post('/edit','EditController@edit')
-    ->name('edit');
+Route::get('/{id}/edit_thread','EditController@edit_thread')
+    ->name('edit_thread');
 
 // update user's question
-Route::post('/update','EditController@update')
-    ->name('update');
+Route::put('/update_thread','EditController@update_thread')
+    ->name('update_thread');
 
 // delete user's question
-Route::post('/delete','DeleteController@delete') 
-    ->name('delete');
+Route::get('/{id}/delete_thread','DeleteController@delete_thread') 
+    ->name('delete_thread');
+
+// edit user's reply
+Route::get('/{id}/{answer_id}/edit_reply','EditController@edit_reply')
+->name('edit_reply');
+
+// update user's reply
+Route::put('/update_reply','EditController@update_reply')
+->name('update_reply');
+
+// delete user's reply
+Route::get('/{id}/{answer_id}/delete_reply','DeleteController@delete_reply') 
+->name('delete_reply');
 

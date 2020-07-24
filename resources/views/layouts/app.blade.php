@@ -38,7 +38,7 @@
         }
     </style>
 </head>
-<body>
+<body style="overflow-x: hidden;">
     <div id="app">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container">
