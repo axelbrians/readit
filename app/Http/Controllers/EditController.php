@@ -59,18 +59,6 @@ class EditController extends Controller
                 ->with('user_id', $user_id);
     }
 
-    public function edit_reply(Request $request, $id, $answer_id)
-    {
-        $answers = DB::table('answers')
-                    ->join('users', 'users.id', '=','answers.id_answer')
-                    ->join('questions', 'questions.id', '=', 'answers.id_question')
-                    ->select('answers.the_answer', 'answers.id', 'questions.id as question_id')
-                    ->where('answers.id', '=', $answer_id)
-                    ->first();
-
-        return view ('editreply', ['answer'=>$answers]);
-    }
-
     public function update_reply(Request $request)
     {
         $id =$request->id;
