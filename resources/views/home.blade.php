@@ -36,7 +36,6 @@
         </div>
     </div>
 </div>
-<!-- Pagination -->
 
 {{-- fetching all question data retrived from HomeController@index --}}
 
@@ -80,9 +79,12 @@
 </div>
 @endforeach
 
-<div class="row justify-content-center">
-    <div class="">
-    {{ $questions->links() }}
+<!-- Pagination -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="container d-flex justify-content-end">
+            {{ $questions->links() }}
+        </div>
     </div>
 </div>
 @endsection

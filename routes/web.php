@@ -77,3 +77,6 @@ Route::put('/update_reply','EditController@update_reply')
 Route::get('/{id}/{answer_id}/delete_reply','DeleteController@delete_reply') 
 ->name('delete_reply');
 
+// My Profile
+Route::post('/profile', 'myProfileController@myProfile')
+->name('myprofile');
