@@ -43,16 +43,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            
             <div class="card card-hoverable mb-4">
-                <div class="card-body">
-                    
+                <div class="card-body">     
                     <a style="text-decoration: none; color: #000;" class="stretched-link" href="{{ route('thread', $question->id) }}">
-
-                    {{-- script for clicking whole a tag, still not working though--}}
-                    {{-- onclick="event.preventDefault();
-                    document.getElementById('view-thread').submit();" --}}
-
                         <div class="media flex-wrap w-100 align-items-center">
                             <div class="media-body truncate">
                                 <h2><strong>{{ $question->title_question }}</strong></h2>
@@ -64,12 +57,7 @@
                                     <div>Member since <strong>{{ Carbon\Carbon::parse($question->user_created_at)->timezone("Asia/Jakarta")->format('M d, Y') }}</strong></div>
                                 </div>
                             </div>
-                        </div>
-
-                        {{-- <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
-                            <input type="hidden" name="id" value="{{ $question->id }}">
-                            @csrf
-                        </form> --}}                
+                        </div>              
                     </a>
                 </div>
             </div>

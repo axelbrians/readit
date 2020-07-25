@@ -2,47 +2,72 @@
 
 @section('content')
 
-<h1>Hello, {{ $myDetails->name }}</h1>
-<h2>My Questions</h2>
+<?php use \App\Http\Controllers\myProfileController; ?>
 
-@foreach ($myQuestion as $$myQuestion)
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            
-            <div class="card card-hoverable mb-4">
-                <div class="card-body">
-                    
-                    <a style="text-decoration: none; color: #000;" class="stretched-link" href="{{ route('thread', $$myQuestion->id) }}">
-
-                    {{-- script for clicking whole a tag, still not working though--}}
-                    {{-- onclick="event.preventDefault();
-                    document.getElementById('view-thread').submit();" --}}
-
-                        <div class="media flex-wrap w-100 align-items-center">
-                            <div class="media-body truncate">
-                                <h2><strong>{{ $$myQuestion->title_question }}</strong></h2>
-                                <div class="text-muted">
-                                    <a href="javascript:void(0)"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ $$myQuestion->name }}</a> | 
-                                    Posted on {{ Carbon\Carbon::parse($$myQuestion->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
-                                </div>
-                                <div class="text-muted">
-                                    <div>Member since <strong>{{ Carbon\Carbon::parse($$myQuestion->user_created_at)->timezone("Asia/Jakarta")->format('M d, Y') }}</strong></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- <form id="view-thread" action="{{ route('thread') }}" method="POST" style="display: none;">
-                            <input type="hidden" name="id" value="{{ $$myQuestion->id }}">
-                            @csrf
-                        </form> --}}                
-                    </a>
-                </div>
+<div class="row mt-4 py-5">
+    <div class="col-md-12">
+        <div class="container">
+            <div>
+                <center><img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar" style="width: 12em;"></center>
             </div>
-            
+            <div>
+                <h1 class="mt-2 mb-5"><center>Hello, <strong>{{ $myDetails->name }}</strong></center></h1>
+            </div>
         </div>
     </div>
 </div>
-@endforeach
+
+<!-- CARD DECK -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="container">
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4"><center>Your <strong>Profile</strong></center></h3>
+                        <p class="card-text mb-1"><small class="text-muted">Username</small></p>
+                        <p class="card-text">{{ $myDetails->name }}</p>
+                        <p class="card-text mb-1"><small class="text-muted">Login Email</small></p>
+                        <p class="card-text">{{ $myDetails->email }}</p>
+                        <p class="card-text mb-1"><small class="text-muted">Password</small></p>
+                        <p class="card-text"><a href="">Change password</a></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4"><center>Your <strong>Thread</strong></center></h3>                        
+                        @foreach ($myQuestion as $myQuestions)
+                            <h5 class="mb-0"><a href="{{ route('thread', $myQuestions->id) }}">{{ $myQuestions->title_question }}</a></h5>
+                            <p class="card-text mb-0"><small class="text-muted">Posted on {{ Carbon\Carbon::parse($myQuestions->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}</small></p>
+                            <p class="card-text mb-4"><small class="text-muted">{{ myProfileController::countReplies($myQuestions->id) }} 
+                            @if (myProfileController::countReplies($myQuestions->id) > 1)
+                                replies
+                            @else
+                                reply    
+                            @endif
+                            </small></p>
+                        @endforeach
+                        @if ($questionCount > 5)
+                            <a href="{{ route('userquestion') }}">See more</a>
+                        @endif
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4"><center>Your <strong>Reply</strong></center></h3>
+                        @foreach ($myAnswer as $myAnswers)
+                            <h5 class="mb-0"><a href="{{ route('thread', $myAnswers->question_id) }}/#{{ sprintf('%06d', $myAnswers->id) }}">Reply #{{ sprintf('%06d', $myAnswers->id) }}</a></h5>
+                            <p class="card-text mb-0"><small class="text-muted">Thread: {{ $myAnswers->title_question }}</small></p>
+                            <p class="card-text mb-4"><small class="text-muted">Posted on {{ Carbon\Carbon::parse($myQuestions->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}</small></p>
+                        @endforeach
+                        @if ($answerCount > 5)
+                            <a href="{{ route('useranswer') }}">See more</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
