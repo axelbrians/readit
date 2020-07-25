@@ -51,7 +51,11 @@
                                 <h2><strong>{{ $question->title_question }}</strong></h2>
                                 <div class="text-muted">
                                     <a href="javascript:void(0)"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ $question->name }}</a> | 
-                                    Posted on {{ Carbon\Carbon::parse($question->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                                    @if($question->updated_at > $question->created_at)
+                                    Last edit {{ Carbon\Carbon::parse($question->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                                    @else
+                                        Posted on {{ Carbon\Carbon::parse($question->updated_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                                    @endif
                                 </div>
                                 <div class="text-muted">
                                     <div>Member since <strong>{{ Carbon\Carbon::parse($question->user_created_at)->timezone("Asia/Jakarta")->format('M d, Y') }}</strong></div>

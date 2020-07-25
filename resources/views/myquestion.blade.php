@@ -24,8 +24,10 @@
                             <div class="media-body truncate">
                                 <h2><strong>{{ $question->title_question }}</strong></h2>
                                 <div class="text-muted">
-                                    Posted on {{ Carbon\Carbon::parse($question->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }} | 
-                                    Last edit {{ Carbon\Carbon::parse($question->updated_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                                    Posted on {{ Carbon\Carbon::parse($question->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                                    @if($question->updated_at > $question->created_at)
+                                     | Last edit {{ Carbon\Carbon::parse($question->updated_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                                   @endif
                                 </div>
                             </div>
                         </div>              

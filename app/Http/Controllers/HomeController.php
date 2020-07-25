@@ -50,7 +50,7 @@ class HomeController extends Controller
 
         $questions = DB::table('questions')
                         ->join('users', 'users.id', '=', 'questions.id_question')
-                        ->select('users.name', 'questions.id_question', 'questions.created_at as created_at', 'questions.updated_at', 'questions.title_question', 'questions.detail_question', 'users.created_at as user_created_at', 'questions.id as id')
+                        ->select('users.name', 'questions.id_question', 'questions.created_at as created_at', 'questions.updated_at as updated_at', 'questions.title_question', 'questions.detail_question', 'users.created_at as user_created_at', 'questions.id as id')
                         ->where('title_question', 'like', '%' . $key . '%')
                         ->latest('questions.updated_at')
                         ->latest('questions.created_at')
