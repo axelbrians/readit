@@ -58,7 +58,7 @@
                         @foreach ($myAnswer as $myAnswers)
                             <h5 class="mb-0"><a href="{{ route('thread', $myAnswers->question_id) }}/#{{ sprintf('%06d', $myAnswers->id) }}">Reply #{{ sprintf('%06d', $myAnswers->id) }}</a></h5>
                             <p class="card-text mb-0"><small class="text-muted">Thread: {{ $myAnswers->title_question }}</small></p>
-                            <p class="card-text mb-4"><small class="text-muted">Posted on {{ Carbon\Carbon::parse($myQuestions->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}</small></p>
+                            <p class="card-text mb-4"><small class="text-muted">Posted on {{ Carbon\Carbon::parse($myAnswers->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}</small></p>
                         @endforeach
                         @if ($answerCount > 5)
                             <a href="{{ route('useranswer') }}">See more</a>

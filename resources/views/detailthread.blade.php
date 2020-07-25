@@ -78,18 +78,6 @@
         </div>
     </div>
 </div>
-<script>
-    function editOpen{{ $questions->id }}()
-    {
-        $("#form{{ $questions->id }}").toggle();
-    }
-
-    function editClose{{ $questions->id }}()
-    {
-        $("#form{{ $questions->id }}").hide();
-    }
-</script>
-
 
 {{-- Fetching all answers data retrieved from HomeController@index --}}
 @foreach ($answers as $answer)
@@ -148,7 +136,6 @@
                 <div class="card-footer">
                     <div class="container d-flex justify-content-end">
                         <a href="javascript:editOpen{{ $answer->id }}()" class="pr-3">Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        {{-- {{route('edit_reply', ['answer_id'=>$answer->id, 'id'=>$questions->id])}} --}}
                         <a href="#" data-toggle="modal" data-target="#deleteReplyModal{{ $answer->id }}">Delete <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                     </div>
                 </div>
@@ -185,6 +172,7 @@
     function editOpen{{ $answer->id }}()
     {
         $("#form{{ $answer->id }}").toggle();
+        window.location.href = "#{{ sprintf('%06d', $answer->id) }}";
     }
 
     function editClose{{ $answer->id }}()
