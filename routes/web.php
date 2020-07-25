@@ -78,5 +78,9 @@ Route::get('/{id}/{answer_id}/delete_reply','DeleteController@delete_reply')
 ->name('delete_reply');
 
 // My Profile
-Route::post('/profile', 'myProfileController@myProfile')
+Route::get('/profile', 'myProfileController@myProfile')
 ->name('myprofile');
+
+// Change Password
+Route::get('/changepassword', 'ChangePasswordController@index')->name('changepassword');
+Route::post('/change_password', 'ChangePasswordController@store')->name('change.password');

@@ -74,4 +74,7 @@
         </div>
     </div>
 </div>
+<script>
+    var currentTitle = 'Register';
+</script>
 @endsection

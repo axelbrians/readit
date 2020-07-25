@@ -228,4 +228,7 @@
     </div>
 </div>
 
+<script>
+    var currentTitle = '{{ $questions->title_question }}';
+</script>
 @endsection

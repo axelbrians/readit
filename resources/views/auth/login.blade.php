@@ -70,4 +70,7 @@
         </div>
     </div>
 </div>
+<script>
+    var currentTitle = 'Login';
+</script>
 @endsection

@@ -1,17 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-        
-            <!-- <div class="content">
-                <div class="title m-b-md">
-                    {{config('app.name')}}
-                </div>
-            </div>
-        </div> -->
-<div class="container" style="height:70vh;">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12 text-center">
-            <h1 style="font-size: 4rem;" class="mb-0 mt-5">
+            <img src="{{ URL::to('/') }}/images/logo.png" alt="logo" style="width: 12rem;" class="mt-5 mb-1">
+            <h1 style="font-size: 4rem;" class="mb-0">
                 Welcome to {{config('app.name')}} 
             </h1>
             <h1 style="font-size: 8rem;" class="mb-5">
@@ -28,4 +22,7 @@
         </div>
     </div>
 </div>
+<script>
+    var currentTitle = 'Welcome to Readit!';
+</script>
 @endsection

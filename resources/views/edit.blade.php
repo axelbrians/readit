@@ -37,4 +37,7 @@
     </form>
 </div>
 
+<script>
+    var currentTitle = 'Edit Thread: {{ $question->title_question }}';
+</script>
 @endsection

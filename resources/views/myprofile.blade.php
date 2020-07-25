@@ -30,7 +30,7 @@
                         <p class="card-text mb-1"><small class="text-muted">Login Email</small></p>
                         <p class="card-text">{{ $myDetails->email }}</p>
                         <p class="card-text mb-1"><small class="text-muted">Password</small></p>
-                        <p class="card-text"><a href="">Change password</a></p>
+                        <p class="card-text"><a href="{{ route('changepassword') }}">Change password</a></p>
                     </div>
                 </div>
                 <div class="card">
@@ -70,4 +70,7 @@
     </div>
 </div>
 
+<script>
+    var currentTitle = 'My Profile';
+</script>
 @endsection

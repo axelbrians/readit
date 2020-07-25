@@ -45,4 +45,8 @@
         </div>
     </div>
 </div>
+
+<script>
+    var currentTitle = 'My Thread';
+</script>
 @endsection

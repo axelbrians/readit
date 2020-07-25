@@ -75,4 +75,8 @@
         </div>
     </div>
 </div>
+
+<script>
+    var currentTitle = 'Home';
+</script>
 @endsection

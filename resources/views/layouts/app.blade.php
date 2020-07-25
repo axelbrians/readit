@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title></title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -37,6 +37,25 @@
             margin-bottom: 30px;
         }
     </style>
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ URL::to('/') }}/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ URL::to('/') }}/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ URL::to('/') }}/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ URL::to('/') }}/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ URL::to('/') }}/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ URL::to('/') }}/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ URL::to('/') }}/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ URL::to('/') }}/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::to('/') }}/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ URL::to('/') }}/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ URL::to('/') }}/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ URL::to('/') }}/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::to('/') }}/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ URL::to('/') }}/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body style="overflow-x: hidden;">
     <div id="app">
@@ -81,10 +100,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
                                     <span>
-                                        <form action="{{ route('myprofile') }}" method="post" id="myprofile-form">
-                                            @csrf
-                                            <a class="dropdown-item" href="javascript:{}" onclick="document.getElementById('myprofile-form').submit();">{{ __('My Profile') }}</a>
-                                        </form>
+                                        <a class="dropdown-item" href="{{ route('myprofile') }}">{{ __('My Profile') }}</a>
                                     </span>
 
                                     <!-- <a class="dropdown-item" href="{{ route('userquestion') }}">
@@ -111,11 +127,12 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
-
+        <script>
+            document.title = 'ReadIt | ' + currentTitle;
+        </script>
         <footer>
             <div class="footer w-100">
 
