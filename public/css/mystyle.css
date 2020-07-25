@@ -144,3 +144,11 @@ hr {
 html {
     scroll-behavior: smooth;
 }
+
+.btn-homepage {
+    min-width: 10rem;
+    min-height: 3rem;
+    border-radius: 10rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
