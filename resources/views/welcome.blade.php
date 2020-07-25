@@ -57,46 +57,45 @@
     <meta name="msapplication-TileImage" content="{{ URL::to('/') }}/images/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12 text-center">
-            <img src="{{ URL::to('/') }}/images/logo.png" alt="logo" style="width: 12rem;" class="mt-5 mb-1">
-            <h1 style="font-size: 4rem;" class="mb-0">
-                Welcome to {{config('app.name')}} 
-            </h1>
-            <h1 style="font-size: 8rem;" class="mb-5">
-                <strong>Commander!</strong>
-            </h1>
-            <hr>
-            <h1 class="mt-5 mb-1">
-                Join us to discuss anything!
-            </h1>
-            <h3 class="mb-5">
-                (yes, absolutely anything!)
-            </h3>
-            <a href="{{ route('login') }}" class="btn btn-success btn-lg">Login</a> or <a href="{{ route('register') }}" class="btn btn-primary btn-lg">Register</a>
+<body style="overflow: hidden;">
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <img src="{{ URL::to('/') }}/images/logo.png" alt="logo" style="width: 12rem;" class="mt-5 mb-1">
+                    <h1 style="font-size: 4rem;" class="mb-0">
+                        Welcome to {{config('app.name')}} 
+                    </h1>
+                    <h1 style="font-size: 8rem;" class="mb-5">
+                        <strong>Commander!</strong>
+                    </h1>
+                    <hr>
+                    <h1 class="mt-5 mb-1">
+                        Join us to discuss anything!
+                    </h1>
+                    <h3 class="mb-5">
+                        (yes, absolutely anything!)
+                    </h3>
+                    <a href="{{ route('login') }}" class="btn btn-success btn-lg btn-homepage mr-3 mb-5">Login</a><a href="{{ route('register') }}" class="btn btn-primary btn-lg btn-homepage mb-5">Register</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</body>
-<script>
-    document.title = 'ReadIt | ' + currentTitle;
-</script>
-<footer>
-    <div class="footer w-100">
+    </main>
+    <script>
+        var currentTitle = 'Welcome to Readit!';
+        document.title = 'ReadIt | ' + currentTitle;
+    </script>
+    <footer>
+        <div class="footer w-100">
 
-    </div>
-    <div class="copyright w-100">
-        <center>&copy; 2020 ReadIt. Proudly made with love.</center>
-    </div>
-</footer>
+        </div>
+        <div class="copyright w-100">
+            <center>&copy; 2020 ReadIt. Proudly made with love.</center>
+        </div>
+    </footer>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
-<script>
-    var currentTitle = 'Welcome to Readit!';
-</script>

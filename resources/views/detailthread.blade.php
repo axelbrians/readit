@@ -7,11 +7,10 @@
     <div class="row justify-content-start">
         <div class="col-md-12" style="padding-left: 2rem;">
             <h1><a href="{{ route('home') }}"><i class="fa fa-home fa-fw" style="font-size: 2.7rem;"></i></a> <i class="fa fa-chevron-right fa-fw" style="font-size: 1rem; position:relative; top: -.3rem;" aria-hidden="true"></i> {{ $questions->title_question }}<span style="color: #B8B8B8;"> #{{ sprintf('%06d', $questions->id) }}</span></h1>
-            Posted by <a href="javascript:void(0)">{{ $questions->name }}</a> | 
             @if($questions->updated_at > $questions->created_at)
-                Last edit {{ Carbon\Carbon::parse($questions->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                Posted by <a href="javascript:void(0)">{{ $questions->name }}</a> | Last edited on {{ Carbon\Carbon::parse($questions->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
             @else
-                on {{ Carbon\Carbon::parse($questions->updated_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                Posted by <a href="javascript:void(0)">{{ $questions->name }}</a> on {{ Carbon\Carbon::parse($questions->updated_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
             @endif |
                 @if ($count > 1)
                     {{ $count }} replies
@@ -62,9 +61,9 @@
                         <div class="d-flex justify-content-between" style="font-size: .7rem;">
                             <div>
                                 @if($questions->updated_at > $questions->created_at)
-                                    Last edit {{ Carbon\Carbon::parse($questions->created_at)->timezone("Asia/Jakarta")->format('M d, Y') }}
+                                    Last edit {{ Carbon\Carbon::parse($questions->updated_at)->timezone("Asia/Jakarta")->format('M d, Y') }}
                                 @else
-                                    Posted on {{ Carbon\Carbon::parse($questions->updated_at)->timezone("Asia/Jakarta")->format('M d, Y') }}
+                                    Posted on {{ Carbon\Carbon::parse($questions->created_at)->timezone("Asia/Jakarta")->format('M d, Y') }}
                                 @endif
                             </div>
                         </div>
