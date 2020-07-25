@@ -30,6 +30,8 @@ class DetailThreadController extends Controller
         $user_id = Auth::user()->id;
         $questions = DB::table('questions')
                         ->join('users', 'users.id', '=', 'questions.id_question')
+                        ->select('users.name as name', 'questions.created_at', 'questions.updated_at',
+                                'questions.title_question', 'questions.detail_question', 'questions.id as id', 'users.created_at as user_created_at')
                         ->where('id_question', '=', $user_id)
                         ->get();
 
@@ -42,6 +44,8 @@ class DetailThreadController extends Controller
         $user_id = Auth::user()->id;
         $answers = DB::table('answers')
                         ->join('users', 'users.id', '=', 'answers.id_answer')
+                        ->select('users.name as name', 'answers.created_at', 'answers.updated_at',
+                                'answers.id_question', 'answers.id as id', 'answers.id_answer', 'users.created_at as user_created_at', 'answers.the_answer')
                         ->where('id_answer', '=', $user_id)
                         ->get();
 
