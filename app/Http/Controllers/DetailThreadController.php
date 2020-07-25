@@ -33,7 +33,8 @@ class DetailThreadController extends Controller
                         ->select('users.name as name', 'questions.created_at', 'questions.updated_at',
                                 'questions.title_question', 'questions.detail_question', 'questions.id as id', 'users.created_at as user_created_at')
                         ->where('id_question', '=', $user_id)
-                        ->get();
+                        ->latest('questions.created_at')
+                        ->paginate(5)->onEachSide(2);
 
         return view('myquestion', ['questions' => $questions]);
     }
@@ -42,12 +43,16 @@ class DetailThreadController extends Controller
     public function myanswer()
     {   
         $user_id = Auth::user()->id;
+
         $answers = DB::table('answers')
-                        ->join('users', 'users.id', '=', 'answers.id_answer')
-                        ->select('users.name as name', 'answers.created_at', 'answers.updated_at',
-                                'answers.id_question', 'answers.id as id', 'answers.id_answer', 'users.created_at as user_created_at', 'answers.the_answer')
-                        ->where('id_answer', '=', $user_id)
-                        ->get();
+                ->join('users', 'users.id', '=', 'answers.id_answer')
+                ->join('questions', 'questions.id', '=', 'answers.id_question')
+                ->select('answers.created_at', 'answers.updated_at', 'users.id as answer_user_id', 
+                        'answers.id_question', 'questions.id as question_id', 'answers.id', 'answers.id_answer', 'users.created_at as user_created_at', 'answers.the_answer',
+                        'questions.title_question')
+                ->where('answers.id_answer', '=', $user_id)
+                ->latest('answers.created_at')
+                ->paginate(5)->onEachSide(2);
 
         // return (['answers' => $answers]);
         return view('myanswer', ['answers' => $answers]);

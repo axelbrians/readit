@@ -131,8 +131,16 @@ hr {
     padding: 1.2rem;
 }
 
-.hide {
-    position: absolute !important;
-    top: -9999px !important;
-    left: -9999px !important;
- }
+.main-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.main-card {
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+html {
+    scroll-behavior: smooth;
+}

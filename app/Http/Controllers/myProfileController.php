@@ -28,14 +28,16 @@ class myProfileController extends Controller
      public function myProfile(Request $request)
      {
         $user_id = Auth::user()->id;
+        $id = $request->id;
 
         $myQuestion = DB::table('questions')
                     ->join('users', 'users.id', '=', 'questions.id_question')
                     ->select('users.name', 'questions.id_question', 'questions.created_at as created_at', 'questions.updated_at',
                     'questions.title_question', 'questions.detail_question', 'users.created_at as user_created_at', 'questions.id as id')
                     ->where('questions.id_question', '=', $user_id)
-                    ->latest('questions.updated_at')
-                    ->paginate(5)->OnEachSide(2);
+                    ->latest('questions.created_at')
+                    ->take(5)
+                    ->get();
 
         $myAnswer = DB::table('answers')
                 ->join('users', 'users.id', '=', 'answers.id_answer')
@@ -45,15 +47,38 @@ class myProfileController extends Controller
                         'questions.title_question')
                 ->where('answers.id_answer', '=', $user_id)
                 ->latest('answers.updated_at')
-                ->paginate(5)->OnEachSide(2);
+                ->take(5)
+                ->get();
 
         $myDetails = DB::table('users')
                 ->where('id', '=', $user_id)
                 ->first();
 
+        $questionCount = DB::table('questions')
+                        ->join('users', 'users.id', '=', 'questions.id_question')
+                        ->where('questions.id_question', '=', $user_id)
+                        ->count();
+        
+        $replyCount = DB::table('answers')
+                        ->join('users', 'users.id', '=', 'answers.id_answer')
+                        ->where('answers.id_answer', '=', $user_id)
+                        ->count();
+
         return view('myprofile')
                 ->with(['myQuestion'=>$myQuestion])
-                ->with(['myAnswers'=>$myAnswer])
-                ->with(['myDetails'=>$myDetails]);
+                ->with(['myAnswer'=>$myAnswer])
+                ->with(['myDetails'=>$myDetails])
+                ->with(['questionCount'=>$questionCount])
+                ->with(['answerCount'=>$replyCount]);
+     }
+
+     public static function countReplies($id)
+     {
+        $count = DB::table('answers')
+                ->select('*')
+                ->where('answers.id_question', '=', $id)
+                ->count();
+
+        return $count;        
      }
 }
