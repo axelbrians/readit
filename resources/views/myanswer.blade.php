@@ -26,8 +26,10 @@
                             <div class="media-body truncate">
                                 <h2><strong>Reply #{{ sprintf('%06d', $answer->id) }}</strong></h2>
                                 <div class="text-muted"> 
-                                    Posted on {{ Carbon\Carbon::parse($answer->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }} | 
-                                    last edit {{ Carbon\Carbon::parse($answer->updated_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                                    Posted on {{ Carbon\Carbon::parse($answer->created_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }} 
+                                    @if($answer->updated_at > $answer->created_at)
+                                     | Last edit {{ Carbon\Carbon::parse($answer->updated_at)->timezone("Asia/Jakarta")->format('M d, Y \a\t H:i') }}
+                                    @endif
                                 </div>
                                 <div class="text-muted">
                                     <div>Thread: <strong>{{ $answer->title_question }}</strong></div>
